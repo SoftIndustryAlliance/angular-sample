@@ -1,0 +1,42 @@
+<div class="content">
+  <div class="form-wrap">
+    <img src="../../../assets/img/7_cups_logo.png"
+         alt="7_cups_logo"
+         class="logo">
+    <form #form="ngForm"
+          name="form"
+          (ngSubmit)="onSubmit()"
+          class="auth-form">
+      <label class="label">
+        <div class="input-wrap">
+          <span class="label-text">E-mail</span>
+          <input type="email"
+                 name="email"
+                 [(ngModel)]="formData.email"
+                 class="input"
+                 required>
+        </div>
+        <span *ngIf="emptyEmail"
+              class="alert">Поле "E-mail" не заполнено</span>
+      </label>
+
+      <label class="label">
+        <div class="input-wrap">
+          <span class="label-text">Пароль</span>
+          <input type="password"
+                 id="password"
+                 name="password"
+                 [(ngModel)]="formData.password"
+                 class="input"
+                 required>
+        </div>
+        <span *ngIf="emptyPassword"
+              class="alert">Поле "Пароль" не заполнено</span>
+      </label>
+
+      <span *ngIf="notValid"
+            class="alert alert-submit">Неверный e-mail или пароль</span>
+      <button class="button__login button">Вход</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@font-face {
+    font-family: 'Exo 2';
+    src: url('assets/font/Exo2-Regular.ttf') format("truetype");
+  }
+
+.body {
+    margin: 0;
+    overflow-y: scroll;
+    background: #f0ece8;
+}
+
+.container {
+    max-width: 1120px;
+    padding: 0 10px;
+}
+
+.centred {
+    margin: 0 auto;
+}
+
+.button {
+    color: #ffffff;
+    border: none;
+    font-size: 14px;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 500;
+    height: 40px;
+    border-radius: 3px;
+    padding: 3px 18px;
+    cursor: pointer;
+}
+
+
+.mat-form-field-underline {
+    display: none;
+  }
+
+.mat-form-field-infix {
+    border: none;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+    padding-bottom: 0;
+}
+
+.input-item .mat-icon-button {
+    background: #e5dbce;
+    border-radius: 3px 0 0 3px;
+}

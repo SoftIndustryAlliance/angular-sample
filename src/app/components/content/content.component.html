@@ -1,0 +1,5 @@
+<app-header (loaderToggle)="reportLoaderToggle($event)"
+            (csvExport)="report.csvExport()"></app-header>
+<app-report [startDate]="reportService.startDateReport"
+            [endDate]="reportService.endDateReport"
+            [sellers]="reportService.sellersReport"></app-report>

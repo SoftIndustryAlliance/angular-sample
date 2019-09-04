@@ -1,0 +1,92 @@
+<header *ngIf="isLoaded"
+        class="header">
+  <div class="header__conteiner container centred">
+    <div class="logo-area">
+      <img src="../../../assets/img/7_cups_logo.png"
+           alt="7_cups_logo"
+           class="header__logo">
+    </div>
+
+    <form #form="ngForm"
+          name="form"
+          (ngSubmit)="onSubmit()"
+          class="header__form">
+      <div class="multiselect">
+        <app-sellers-select *ngIf="sellers"
+                            [items]="sellers"
+                            title="Точки продаж"
+                            (selected)="setSelectedSellers($event)">
+        </app-sellers-select>
+      </div>
+      <div class="dates">
+        <span class="period-label">Период:</span>
+        <div class="input-item">
+          <mat-datepicker-toggle matSuffix
+                                 [for]="start"></mat-datepicker-toggle>
+          <input matInput
+                 [matDatepicker]="start"
+                 [min]="minDateSale"
+                 [max]="maxDateSale"
+                 [(ngModel)]="formData.startDate"
+                 name="startDate"
+                 placeholder="Начало периода"
+                 class="datepicker"
+                 disabled>
+          <mat-datepicker #start
+                          disabled="false"></mat-datepicker>
+        </div>
+        <div class="input-item">
+          <mat-datepicker-toggle matSuffix
+                                 [for]="end"></mat-datepicker-toggle>
+          <input matInput
+                 [matDatepicker]="end"
+                 [min]="formData.startDate"
+                 [max]="maxDateSale"
+                 [(ngModel)]="formData.endDate"
+                 name="endDate"
+                 placeholder="Окончание периода"
+                 class="datepicker"
+                 disabled>
+          <mat-datepicker #end
+                          disabled="false"></mat-datepicker>
+        </div>
+      </div>
+      <div class="header__buttons">
+        <button type="submit"
+                class="button__report button">Отчёт</button>
+        <button type="button"
+                class="button__export button"
+                [disabled]="disabled || !selectedSellers.length"
+                [class.disabled]="disabled || !selectedSellers.length"
+                (click)="exportToCsv()">to .csv</button>
+        <button (click)="signOut()"
+                class="button button__exit">Выход</button>
+      </div>
+    </form>
+
+  </div>
+</header>
+
+<div class="selected-items container centred">
+  <div *ngFor="let seller of selectedSellers"
+       (click)="removeFromSelected(seller)"
+       class="choosen-wrap">
+    <div class="choosen">
+      <span class="choosen-title">{{seller.email}}</span>
+      <mat-icon svgIcon="close"
+                class="icon-close"></mat-icon>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showModal"
+     class="modal-overlay">
+  <div class="modal-alert">
+    <span class="modal-text">{{alertText}}</span>
+    <button (click)="showModal=false"
+            class="button button__modal">ОК</button>
+  </div>
+</div>
+
+<mat-spinner *ngIf="!isLoaded"
+             class="spinner"></mat-spinner>

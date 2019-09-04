@@ -1,0 +1,23 @@
+<div (blur)="closeList()"
+     class="select"
+     tabindex="0">
+  <div class="title-area">
+    <div (click)="toggleList()"
+         class="icon-area">
+      <mat-icon svgIcon="pin"></mat-icon>
+    </div>
+    <span class="title">{{title}}</span>
+  </div>
+  <ul *ngIf="items && opened"
+      class="select-list">
+    <ng-template ngFor
+                 let-item
+                 [ngForOf]="items">
+      <li *ngIf="!selectedItem"
+          (click)="toggleSelected(item)"
+          [class.selected]="isSelected(item)"
+          class="list-item">
+        {{item.email}}</li>
+    </ng-template>
+  </ul>
+</div>

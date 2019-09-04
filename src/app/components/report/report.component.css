@@ -1,0 +1,45 @@
+.table {
+    width: 100%;
+    color: #212529;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    border-collapse: collapse;
+}
+
+.table .th,
+.table .td {
+    padding: 20px;
+}
+
+.table-body .row:nth-child(odd) {
+   background-color: #f0ece8;
+ }
+
+ .table-body .row:nth-child(even) {
+    background-color: #f9f7f2;
+  }
+
+.table-head {
+    background: #ffffff;
+    color: #706f6d;
+    text-align: left;
+}
+
+.table-body {
+    color: #666563;
+}
+
+.total-sales {
+    background: #4c4b4a;
+    color: #ffffff;
+}
+
+.time-period {
+    color: #d98a2f;
+    font-size: 11px;
+}
+
+.spinner {
+    margin: 50px auto;
+}

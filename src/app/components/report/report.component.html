@@ -1,0 +1,36 @@
+<main class="container centred">
+  <table *ngIf="sellers && sellers.length > 0 && !isLoaded"
+         class="table">
+    <thead class="table-head">
+      <tr class="row">
+        <th class="th">№</th>
+        <th class="th">Продавец</th>
+        <th class="th">Кол-во платных чашек</th>
+        <th class="th">Кол-во бесплатных чашек</th>
+        <th class="th">Чашек всего</th>
+      </tr>
+    </thead>
+    <tbody class="table-body">
+      <tr *ngFor="let seller of sellers; index as id"
+          class="row">
+        <td class="td">{{id +1}}</td>
+        <td class="td">{{seller.email}}</td>
+        <td class="td">{{seller.cups}}</td>
+        <td class="td">{{seller.cupsFree}}</td>
+        <td class="td">{{seller.cupsTotal}}</td>
+      </tr>
+    </tbody>
+    <tfoot class="table-footer">
+      <tr class="row total-sales">
+        <td class="td"></td>
+        <td class="td">Всего за период: <span class="time-period">{{startDate | date: 'dd.MM.yyyy'}} -
+            {{endDate | date: 'dd.MM.yyyy'}}</span></td>
+        <td class="td">{{cupsSum}}</td>
+        <td class="td">{{cupsFreeSum}}</td>
+        <td class="td">{{cupsTotalSum}}</td>
+      </tr>
+    </tfoot>
+  </table>
+  <mat-spinner *ngIf="isLoaded"
+               class="spinner"></mat-spinner>
+</main>
